@@ -11,6 +11,7 @@ import Footer from '../components/Footer';
 import InteractiveCursor from '../components/InteractiveCursor';
 import ParticleSystem from '../components/ParticleSystem';
 import EasterEggs from '../components/EasterEggs';
+import ThemeSwitcher from '../components/ThemeSwitcher';
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -24,10 +25,11 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative">
+    <div className="min-h-screen bg-gradient-to-br from-navy-50 via-gold-50 to-navy-100 dark:from-navy-900 dark:via-navy-800 dark:to-gold-900 relative transition-colors duration-500">
       <InteractiveCursor />
       <ParticleSystem />
       <EasterEggs />
+      <ThemeSwitcher />
       
       <AnimatePresence mode="wait">
         {loading ? (

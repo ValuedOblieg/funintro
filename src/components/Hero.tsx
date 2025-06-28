@@ -11,7 +11,7 @@ const Hero = () => {
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-2 h-2 bg-blue-200 rounded-full opacity-30"
+            className="absolute w-2 h-2 bg-gold-300 dark:bg-navy-300 rounded-full opacity-30"
             animate={{
               x: [0, 100, 0],
               y: [0, -100, 0],
@@ -39,7 +39,7 @@ const Hero = () => {
             damping: 20,
             delay: 0.2 
           }}
-          className="w-32 h-32 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mx-auto mb-8 flex items-center justify-center shadow-xl hover-effect"
+          className="w-32 h-32 bg-gradient-to-r from-navy-500 to-gold-500 dark:from-gold-400 dark:to-navy-400 rounded-full mx-auto mb-8 flex items-center justify-center shadow-xl hover-effect"
         >
           <GraduationCap className="w-16 h-16 text-white" />
         </motion.div>
@@ -48,7 +48,7 @@ const Hero = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-slate-700 to-blue-600 bg-clip-text text-transparent mb-6 hover-effect"
+          className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-navy-700 to-gold-600 dark:from-gold-400 dark:to-navy-300 bg-clip-text text-transparent mb-6 hover-effect"
         >
           Hello, I'm Farrel
         </motion.h1>
