@@ -1,11 +1,13 @@
+
 import { motion } from 'framer-motion';
 import { GraduationCap, School, Home } from 'lucide-react';
+import ParallaxWrapper from './ParallaxWrapper';
 
 const Hero = () => {
   return (
     <section className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Animated background elements with parallax */}
+      <ParallaxWrapper speed={0.3} className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <motion.div
             key={i}
@@ -25,7 +27,7 @@ const Hero = () => {
             }}
           />
         ))}
-      </div>
+      </ParallaxWrapper>
 
       <div className="text-center relative z-10">
         <motion.div
@@ -37,7 +39,7 @@ const Hero = () => {
             damping: 20,
             delay: 0.2 
           }}
-          className="w-32 h-32 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mx-auto mb-8 flex items-center justify-center shadow-xl"
+          className="w-32 h-32 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mx-auto mb-8 flex items-center justify-center shadow-xl hover-effect"
         >
           <GraduationCap className="w-16 h-16 text-white" />
         </motion.div>
@@ -46,9 +48,9 @@ const Hero = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-slate-700 to-blue-600 bg-clip-text text-transparent mb-6"
+          className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-slate-700 to-blue-600 bg-clip-text text-transparent mb-6 hover-effect"
         >
-          Hello, I'm Alex
+          Hello, I'm Farrel
         </motion.h1>
 
         <motion.div
@@ -59,7 +61,7 @@ const Hero = () => {
         >
           <div className="flex items-center justify-center gap-2 text-slate-600">
             <School className="w-5 h-5" />
-            <span className="text-lg">16 years old • High School Student</span>
+            <span className="text-lg">16 years old • High School Student • ISFP sx964</span>
           </div>
           
           <div className="flex items-center justify-center gap-2 text-slate-600">
@@ -87,7 +89,7 @@ const Hero = () => {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-blue-400"
+            className="text-blue-400 hover-effect cursor-pointer"
           >
             ↓ Scroll to explore ↓
           </motion.div>
