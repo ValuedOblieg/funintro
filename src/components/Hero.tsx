@@ -1,6 +1,5 @@
-
 import { motion } from 'framer-motion';
-import { Graduation, School, Home } from 'lucide-react';
+import { GraduationCap, School, Home } from 'lucide-react';
 
 const Hero = () => {
   return (
@@ -40,7 +39,7 @@ const Hero = () => {
           }}
           className="w-32 h-32 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-full mx-auto mb-8 flex items-center justify-center shadow-xl"
         >
-          <Graduation className="w-16 h-16 text-white" />
+          <GraduationCap className="w-16 h-16 text-white" />
         </motion.div>
 
         <motion.h1
