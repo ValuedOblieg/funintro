@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { GraduationCap, School, Home, Coffee, Heart, Star } from 'lucide-react';
+import { GraduationCap, School, Home, Coffee, Heart, Star, Github } from 'lucide-react';
 import ParallaxWrapper from './ParallaxWrapper';
 
 const Hero = () => {
@@ -92,8 +92,23 @@ const Hero = () => {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1.4, duration: 0.6 }}
-          className="mt-6 sm:mt-8"
+          className="mt-6 sm:mt-8 flex flex-col items-center gap-4"
         >
+          <motion.a
+            href="https://github.com/farrel-a"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-full font-medium hover-effect theme-transition"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 25px rgba(0,0,0,0.2)"
+            }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Github className="w-5 h-5" />
+            <span>View My GitHub</span>
+          </motion.a>
+          
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}

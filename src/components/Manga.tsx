@@ -1,7 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Book, Heart, Star } from 'lucide-react';
+import { Book, Heart, Star, ExternalLink } from 'lucide-react';
 
 const Manga = () => {
   const [ref, inView] = useInView({
@@ -9,8 +9,32 @@ const Manga = () => {
     threshold: 0.1,
   });
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+      },
+    },
+  };
+
   return (
-    <section ref={ref} className="py-20 px-6 bg-gradient-to-l from-indigo-50 to-blue-50">
+    <section ref={ref} className="py-20 px-6 bg-gradient-to-l from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 theme-transition">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -18,91 +42,142 @@ const Manga = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-slate-700 mb-4">
+          <motion.h2 
+            className="text-4xl font-bold text-black dark:text-white mb-4"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
             My Manga Obsession
-          </h2>
-          <p className="text-xl text-slate-500">
+          </motion.h2>
+          <p className="text-xl text-gray-600 dark:text-gray-400">
             Where stories come alive and emotions hit different
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="bg-white rounded-3xl p-8 shadow-xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-200 to-indigo-200 rounded-bl-full opacity-50"></div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="grid lg:grid-cols-2 gap-12 items-center"
+        >
+          <motion.div variants={itemVariants}>
+            <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl relative overflow-hidden theme-transition">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-bl-full opacity-50 theme-transition"></div>
               
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
-                  <Book className="w-8 h-8 text-blue-500" />
-                  <h3 className="text-2xl font-bold text-slate-700">Current Favorite</h3>
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                  >
+                    <Book className="w-8 h-8 text-gray-700 dark:text-gray-300" />
+                  </motion.div>
+                  <h3 className="text-2xl font-bold text-black dark:text-white">Current Favorite</h3>
                 </div>
                 
-                <h4 className="text-3xl font-semibold text-blue-600 mb-4">
+                <motion.h4 
+                  className="text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-4"
+                  whileHover={{ scale: 1.02 }}
+                >
                   "The Fragrant Flowers Blooms With Dignity"
-                </h4>
+                </motion.h4>
                 
-                <p className="text-slate-600 leading-relaxed mb-6">
-                  This manga isn't just a story—it's an emotional journey that hits you right in the feels. 
-                  The way it portrays dignity, growth, and the beauty of human connections is absolutely 
-                  mesmerizing. Every chapter leaves me contemplating life and relationships in ways I never expected.
-                </p>
+                <div className="flex items-center gap-6 mb-6">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="flex-shrink-0"
+                  >
+                    <img 
+                      src="https://static.wikia.nocookie.net/kaoruhana/images/2/2a/Volume_5_Cover.jpg/revision/latest/scale-to-width-down/536?cb=20221231090814" 
+                      alt="Volume 5 Cover"
+                      className="w-24 h-32 object-cover rounded-lg shadow-lg"
+                    />
+                  </motion.div>
+                  <div className="flex-1">
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                      This manga isn't just a story—it's an emotional journey that hits you right in the feels. 
+                      The way it portrays dignity, growth, and the beauty of human connections is absolutely 
+                      mesmerizing.
+                    </p>
+                  </div>
+                </div>
                 
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1">
+                  <motion.div 
+                    className="flex items-center gap-1"
+                    whileHover={{ scale: 1.1 }}
+                  >
                     {[1,2,3,4,5].map((star) => (
-                      <Star key={star} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      <motion.div
+                        key={star}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: star * 0.1 }}
+                        whileHover={{ scale: 1.2 }}
+                      >
+                        <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                      </motion.div>
                     ))}
-                  </div>
-                  <span className="text-slate-500">Absolutely Phenomenal</span>
+                  </motion.div>
+                  <span className="text-gray-500 dark:text-gray-400">Absolutely Phenomenal</span>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6"
-          >
-            <div className="bg-gradient-to-r from-blue-100 to-indigo-100 rounded-2xl p-6 shadow-lg">
+          <motion.div variants={itemVariants} className="space-y-6">
+            <motion.div 
+              className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6 shadow-lg theme-transition"
+              whileHover={{ scale: 1.02, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               <div className="flex items-center gap-3 mb-3">
-                <Heart className="w-6 h-6 text-red-400" />
-                <h4 className="text-xl font-semibold text-slate-700">Why I Love It</h4>
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  <Heart className="w-6 h-6 text-red-400" />
+                </motion.div>
+                <h4 className="text-xl font-semibold text-black dark:text-white">Why I Love It</h4>
               </div>
-              <p className="text-slate-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 The character development is chef's kiss! Each character feels so real, 
                 with their own struggles and growth arcs that mirror real-life experiences.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-gradient-to-r from-indigo-100 to-purple-100 rounded-2xl p-6 shadow-lg">
-              <h4 className="text-xl font-semibold text-slate-700 mb-3">
+            <motion.div 
+              className="bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-2xl p-6 shadow-lg theme-transition"
+              whileHover={{ scale: 1.02, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <h4 className="text-xl font-semibold text-black dark:text-white mb-3">
                 Impact on Me
               </h4>
-              <p className="text-slate-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 This manga taught me that dignity isn't about perfection—it's about staying 
                 true to yourself while growing through life's challenges. Pretty deep for a 
                 16-year-old, right? 😄
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-gradient-to-r from-purple-100 to-pink-100 rounded-2xl p-6 shadow-lg">
-              <h4 className="text-xl font-semibold text-slate-700 mb-3">
+            <motion.div 
+              className="bg-gradient-to-r from-gray-300 to-gray-400 dark:from-gray-600 dark:to-gray-500 rounded-2xl p-6 shadow-lg theme-transition"
+              whileHover={{ scale: 1.02, y: -5 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <h4 className="text-xl font-semibold text-black dark:text-white mb-3">
                 Reading Ritual
               </h4>
-              <p className="text-slate-600">
+              <p className="text-gray-600 dark:text-gray-400">
                 Every new chapter release is an event! I dim the lights, grab some snacks, 
                 and prepare for an emotional rollercoaster. Sometimes I end up crying, 
                 sometimes laughing—but always satisfied.
               </p>
-            </div>
+            </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
