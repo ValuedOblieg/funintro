@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Preloader from '../components/Preloader';
@@ -10,8 +11,8 @@ import Hobbies from '../components/Hobbies';
 import Footer from '../components/Footer';
 import InteractiveCursor from '../components/InteractiveCursor';
 import ParticleSystem from '../components/ParticleSystem';
-import EasterEggs from '../components/EasterEggs';
 import ThemeSwitcher from '../components/ThemeSwitcher';
+import PersonalityQuirks from '../components/PersonalityQuirks';
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
@@ -28,7 +29,7 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-black dark:via-gray-900 dark:to-gray-800 relative theme-transition">
       <InteractiveCursor />
       <ParticleSystem />
-      <EasterEggs />
+      <PersonalityQuirks />
       <ThemeSwitcher />
       
       <AnimatePresence mode="wait">
