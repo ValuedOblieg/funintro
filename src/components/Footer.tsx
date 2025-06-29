@@ -38,7 +38,7 @@ const Footer = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-sm text-navy-400 mt-6"
         >
-          © 2024 Farrel • Ignatius Global School Palembang • Future Swiss Resident (hopefully!)
+          © 2025 Farrel • Ignatius Global School Palembang • Future Swiss Resident (hopefully!)
         </motion.p>
       </div>
     </footer>

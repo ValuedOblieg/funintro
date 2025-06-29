@@ -26,9 +26,27 @@ const Manga = () => {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 10,
+      },
+    },
+  };
+
+  const floatVariants = {
+    hidden: { y: 0, opacity: 0 },
+    visible: {
+      y: [-10, 10, -10],
+      opacity: 1,
+      transition: {
+        y: {
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        },
+        opacity: {
+          duration: 0.5
+        }
       },
     },
   };
@@ -84,14 +102,19 @@ const Manga = () => {
                 
                 <div className="flex items-center gap-6 mb-6">
                   <motion.div
+                    variants={floatVariants}
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                     className="flex-shrink-0"
                   >
                     <img 
-                      src="https://static.wikia.nocookie.net/kaoruhana/images/2/2a/Volume_5_Cover.jpg/revision/latest/scale-to-width-down/536?cb=20221231090814" 
-                      alt="Volume 5 Cover"
+                      src="https://static.wikia.nocookie.net/kaoruhana/images/2/2a/Volume_5_Cover.jpg"
+                      alt="The Fragrant Flowers Blooms With Dignity Volume 5 Cover"
                       className="w-24 h-32 object-cover rounded-lg shadow-lg"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "https://via.placeholder.com/96x128/6B7280/FFFFFF?text=Volume+5";
+                      }}
                     />
                   </motion.div>
                   <div className="flex-1">
