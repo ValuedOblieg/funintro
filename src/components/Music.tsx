@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Play, Pause, Music, Heart, ExternalLink } from 'lucide-react';
+import { Play, Pause, Music as MusicIcon, Heart, ExternalLink } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
@@ -55,11 +55,11 @@ const Music = () => {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-3 mb-6">
-            <Music className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+            <MusicIcon className="w-8 h-8 text-purple-600 dark:text-purple-400" />
             <h2 className="text-4xl font-bold bg-gradient-to-r from-black to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               Current Favorite Music Artist
             </h2>
-            <Music className="w-8 h-8 text-purple-600 dark:text-purple-400" />
+            <MusicIcon className="w-8 h-8 text-purple-600 dark:text-purple-400" />
           </div>
         </motion.div>
 
