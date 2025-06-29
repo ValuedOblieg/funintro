@@ -1,10 +1,10 @@
-
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Preloader from '../components/Preloader';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Manga from '../components/Manga';
+import Music from '../components/Music';
 import Goals from '../components/Goals';
 import Hobbies from '../components/Hobbies';
 import Footer from '../components/Footer';
@@ -25,7 +25,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-navy-50 via-gold-50 to-navy-100 dark:from-navy-900 dark:via-navy-800 dark:to-gold-900 relative transition-colors duration-500">
+    <div className="min-h-screen bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-black dark:via-gray-900 dark:to-gray-800 relative theme-transition">
       <InteractiveCursor />
       <ParticleSystem />
       <EasterEggs />
@@ -45,6 +45,7 @@ const Index = () => {
             <Hero />
             <About />
             <Manga />
+            <Music />
             <Goals />
             <Hobbies />
             <Footer />

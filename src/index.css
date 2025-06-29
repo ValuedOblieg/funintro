@@ -3,28 +3,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Navy + Gold Color Palette */
+/* Black + White Color Palette */
 @layer base {
   :root {
-    --background: 248 250 252;
-    --foreground: 15 23 42;
+    --background: 255 255 255;
+    --foreground: 0 0 0;
 
-    --card: 255 255 255;
-    --card-foreground: 15 23 42;
+    --card: 248 250 252;
+    --card-foreground: 0 0 0;
 
     --popover: 255 255 255;
-    --popover-foreground: 15 23 42;
+    --popover-foreground: 0 0 0;
 
-    --primary: 15 23 42;
-    --primary-foreground: 248 250 252;
+    --primary: 0 0 0;
+    --primary-foreground: 255 255 255;
 
     --secondary: 241 245 249;
-    --secondary-foreground: 15 23 42;
+    --secondary-foreground: 0 0 0;
 
     --muted: 241 245 249;
-    --muted-foreground: 100 116 139;
+    --muted-foreground: 71 85 105;
 
-    --accent: 217 119 6;
+    --accent: 71 85 105;
     --accent-foreground: 255 255 255;
 
     --destructive: 239 68 68;
@@ -32,55 +32,31 @@
 
     --border: 226 232 240;
     --input: 226 232 240;
-    --ring: 15 23 42;
+    --ring: 0 0 0;
 
     --radius: 0.5rem;
-
-    /* Navy shades */
-    --navy-50: 248 250 252;
-    --navy-100: 241 245 249;
-    --navy-200: 226 232 240;
-    --navy-300: 203 213 225;
-    --navy-400: 148 163 184;
-    --navy-500: 100 116 139;
-    --navy-600: 71 85 105;
-    --navy-700: 51 65 85;
-    --navy-800: 30 41 59;
-    --navy-900: 15 23 42;
-
-    /* Gold shades */
-    --gold-50: 255 251 235;
-    --gold-100: 254 243 199;
-    --gold-200: 253 230 138;
-    --gold-300: 252 211 77;
-    --gold-400: 251 191 36;
-    --gold-500: 245 158 11;
-    --gold-600: 217 119 6;
-    --gold-700: 180 83 9;
-    --gold-800: 146 64 14;
-    --gold-900: 120 53 15;
   }
 
   .dark {
-    --background: 15 23 42;
-    --foreground: 248 250 252;
-    --card: 30 41 59;
-    --card-foreground: 248 250 252;
-    --popover: 30 41 59;
-    --popover-foreground: 248 250 252;
-    --primary: 245 158 11;
-    --primary-foreground: 15 23 42;
-    --secondary: 51 65 85;
-    --secondary-foreground: 248 250 252;
-    --muted: 51 65 85;
-    --muted-foreground: 148 163 184;
-    --accent: 245 158 11;
-    --accent-foreground: 15 23 42;
+    --background: 0 0 0;
+    --foreground: 255 255 255;
+    --card: 15 15 15;
+    --card-foreground: 255 255 255;
+    --popover: 15 15 15;
+    --popover-foreground: 255 255 255;
+    --primary: 255 255 255;
+    --primary-foreground: 0 0 0;
+    --secondary: 30 30 30;
+    --secondary-foreground: 255 255 255;
+    --muted: 30 30 30;
+    --muted-foreground: 156 163 175;
+    --accent: 255 255 255;
+    --accent-foreground: 0 0 0;
     --destructive: 239 68 68;
     --destructive-foreground: 248 250 252;
-    --border: 51 65 85;
-    --input: 51 65 85;
-    --ring: 245 158 11;
+    --border: 64 64 64;
+    --input: 64 64 64;
+    --ring: 255 255 255;
   }
 }
 
@@ -88,12 +64,21 @@
   * {
     @apply border-border;
     cursor: none !important;
+    transition: all 0.3s ease;
   }
 
   body {
     @apply bg-background text-foreground;
     cursor: none !important;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.5s ease, color 0.5s ease;
+  }
+
+  html {
+    transition: all 0.5s ease;
+  }
+
+  .dark {
+    transition: all 0.5s ease;
   }
 }
 
@@ -106,52 +91,7 @@
     @apply transform translate-y-[-2px];
   }
 
-  /* Navy color utilities */
-  .text-navy-50 { color: rgb(248 250 252); }
-  .text-navy-100 { color: rgb(241 245 249); }
-  .text-navy-200 { color: rgb(226 232 240); }
-  .text-navy-300 { color: rgb(203 213 225); }
-  .text-navy-400 { color: rgb(148 163 184); }
-  .text-navy-500 { color: rgb(100 116 139); }
-  .text-navy-600 { color: rgb(71 85 105); }
-  .text-navy-700 { color: rgb(51 65 85); }
-  .text-navy-800 { color: rgb(30 41 59); }
-  .text-navy-900 { color: rgb(15 23 42); }
-
-  .bg-navy-50 { background-color: rgb(248 250 252); }
-  .bg-navy-100 { background-color: rgb(241 245 249); }
-  .bg-navy-200 { background-color: rgb(226 232 240); }
-  .bg-navy-300 { background-color: rgb(203 213 225); }
-  .bg-navy-400 { background-color: rgb(148 163 184); }
-  .bg-navy-500 { background-color: rgb(100 116 139); }
-  .bg-navy-600 { background-color: rgb(71 85 105); }
-  .bg-navy-700 { background-color: rgb(51 65 85); }
-  .bg-navy-800 { background-color: rgb(30 41 59); }
-  .bg-navy-900 { background-color: rgb(15 23 42); }
-
-  /* Gold color utilities */
-  .text-gold-50 { color: rgb(255 251 235); }
-  .text-gold-100 { color: rgb(254 243 199); }
-  .text-gold-200 { color: rgb(253 230 138); }
-  .text-gold-300 { color: rgb(252 211 77); }
-  .text-gold-400 { color: rgb(251 191 36); }
-  .text-gold-500 { color: rgb(245 158 11); }
-  .text-gold-600 { color: rgb(217 119 6); }
-  .text-gold-700 { color: rgb(180 83 9); }
-  .text-gold-800 { color: rgb(146 64 14); }
-  .text-gold-900 { color: rgb(120 53 15); }
-
-  .bg-gold-50 { background-color: rgb(255 251 235); }
-  .bg-gold-100 { background-color: rgb(254 243 199); }
-  .bg-gold-200 { background-color: rgb(253 230 138); }
-  .bg-gold-300 { background-color: rgb(252 211 77); }
-  .bg-gold-400 { background-color: rgb(251 191 36); }
-  .bg-gold-500 { background-color: rgb(245 158 11); }
-  .bg-gold-600 { background-color: rgb(217 119 6); }
-  .bg-gold-700 { background-color: rgb(180 83 9); }
-  .bg-gold-800 { background-color: rgb(146 64 14); }
-  .bg-gold-900 { background-color: rgb(120 53 15); }
-
-  .border-navy-200 { border-color: rgb(226 232 240); }
-  .border-gold-300 { border-color: rgb(252 211 77); }
+  .theme-transition {
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  }
 }

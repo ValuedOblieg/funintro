@@ -35,7 +35,7 @@ const ThemeSwitcher = () => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="fixed top-6 right-6 z-50 p-3 bg-white dark:bg-navy-800 rounded-full shadow-lg hover-effect border border-navy-200 dark:border-gold-300"
+      className="fixed top-4 right-4 sm:top-6 sm:right-6 z-50 p-2 sm:p-3 bg-white dark:bg-gray-800 rounded-full shadow-lg hover-effect border border-gray-200 dark:border-gray-600 theme-transition"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       initial={{ opacity: 0, scale: 0 }}
@@ -44,12 +44,12 @@ const ThemeSwitcher = () => {
     >
       <motion.div
         animate={{ rotate: isDark ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
       >
         {isDark ? (
-          <Sun className="w-6 h-6 text-gold-500" />
+          <Sun className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-500" />
         ) : (
-          <Moon className="w-6 h-6 text-navy-600" />
+          <Moon className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
         )}
       </motion.div>
     </motion.button>
